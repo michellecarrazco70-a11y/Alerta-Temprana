@@ -14,6 +14,7 @@ import { AccessTokenGuard } from './common/guards/access-token.guard';
 import { PermissionsGuard } from './common/guards/permissions.guard';
 import { SystemLogsModule } from './system-logs/system-logs.module';
 import { DashboardUserModule } from './dashboard-user/dashboard-user.module';
+import { RiesgoMediaticoModule } from './riesgo-mediatico/riesgo-mediatico.module';
 
 
 @Module({
@@ -33,6 +34,7 @@ import { DashboardUserModule } from './dashboard-user/dashboard-user.module';
 		RolesModule,
 		GroupsModule,
 		DashboardUserModule,
+		RiesgoMediaticoModule,
 	],
 	controllers: [],
 	providers: [
