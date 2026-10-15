@@ -17,7 +17,7 @@ import {
 import { ERRORS } from '../common/constants/errors.const';
 import { FindUsersFiltersDTO } from '../common/dtos/page-options.dto';
 import { LOG_ACTIONS } from '../common/enums/log-movements.enum';
-import { dashboard_user, Permission, PermissionRole, Role, RoleUser, User } from '../entities';
+import { Permission, PermissionRole, Role, RoleUser, User } from '../entities';
 import { TypeToken, UserTokens } from '../entities/usr/user-tokens.entity';
 import { PermissionDto } from '../permissions/dto/permission.dto';
 import { RoleDto } from '../roles/dto/role.dto';
@@ -28,7 +28,6 @@ import { EditProfileDto } from './dto/edit-profile.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { MailProvider } from '../common/providers/mail.provider';
 import { HttpStatusCode } from 'axios';
-import { MapaService } from 'src/dashboard-manager/mapa.service';
 
 @Injectable()
 export class UsersService {
@@ -45,9 +44,6 @@ export class UsersService {
 		private permissionRoleRepository: Repository<PermissionRole>,
 		private logger: LoggerService,
 		private mail: MailProvider,
-		@InjectRepository(dashboard_user)
-		private dashboardUserRepository: Repository<dashboard_user>,
-		private readonly mapaService: MapaService
 	) {
 		logger.setContext(UsersService.name)
 	}
@@ -121,12 +117,12 @@ export class UsersService {
 
 		user.roleUsers = rolesUser;
 
-		await this.mapaService.syncRedTroncalCustomProfileForUser({
-			userId: user.id,
-			userUuid: user.uuid,
-			enabled: await this.hasRedTroncalRole(roleIds),
-			layers: redTroncalPerfil?.layers ?? [],
-		});
+		// await this.mapaService.syncRedTroncalCustomProfileForUser({
+		// 	userId: user.id,
+		// 	userUuid: user.uuid,
+		// 	enabled: await this.hasRedTroncalRole(roleIds),
+		// 	layers: redTroncalPerfil?.layers ?? [],
+		// });
 
 		await this.logger.log(null, requestUserId, LOG_ACTIONS.NEW_REGISTER, {
 			registeredId: user.id,
@@ -216,12 +212,12 @@ export class UsersService {
 			await this.roleUserRepository.delete({ userId: user.id });
 		}
 
-		await this.mapaService.syncRedTroncalCustomProfileForUser({
-			userId: user.id,
-			userUuid: user.uuid,
-			enabled: await this.hasRedTroncalRole(roleIds),
-			layers: redTroncalPerfil?.layers ?? [],
-		});
+		// await this.mapaService.syncRedTroncalCustomProfileForUser({
+		// 	userId: user.id,
+		// 	userUuid: user.uuid,
+		// 	enabled: await this.hasRedTroncalRole(roleIds),
+		// 	layers: redTroncalPerfil?.layers ?? [],
+		// });
 
 		await this.logger.log(null, requestUserId, LOG_ACTIONS.EDIT_USER, {
 			id: user.id, email: user.email, password: user.password, roles: oldRoles
@@ -246,7 +242,7 @@ export class UsersService {
 		const prevName = await this.getUserNameById(user.uuid)
 
 		// borrando relaciones
-		const resultDelete = await this.dashboardUserRepository.delete({user_id: user.uuid})
+		// const resultDelete = await this.dashboardUserRepository.delete({user_id: user.uuid})
 		
 		// Perform the deletion
         const result = await this.userRepository.delete({uuid: uid});

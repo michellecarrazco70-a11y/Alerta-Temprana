@@ -13,10 +13,7 @@ import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
 import { AccessTokenGuard } from './common/guards/access-token.guard';
 import { PermissionsGuard } from './common/guards/permissions.guard';
 import { SystemLogsModule } from './system-logs/system-logs.module';
-import { DashboardManagerModule } from './dashboard-manager/dashboard-manager.module';
 import { DashboardUserModule } from './dashboard-user/dashboard-user.module';
-import { SeccionesModule } from './secciones/secciones.module';
-import { AccesosPublicosModule } from './accesos-publicos/accesos-publicos.module';
 
 
 @Module({
@@ -35,10 +32,7 @@ import { AccesosPublicosModule } from './accesos-publicos/accesos-publicos.modul
 		PermissionsModule,
 		RolesModule,
 		GroupsModule,
-		DashboardManagerModule,
 		DashboardUserModule,
-		SeccionesModule,
-		AccesosPublicosModule
 	],
 	controllers: [],
 	providers: [
