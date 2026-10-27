@@ -15,6 +15,7 @@ import { PermissionsGuard } from './common/guards/permissions.guard';
 import { SystemLogsModule } from './system-logs/system-logs.module';
 import { DashboardUserModule } from './dashboard-user/dashboard-user.module';
 import { RiesgoMediaticoModule } from './riesgo-mediatico/riesgo-mediatico.module';
+import { AlertaTempranaModule } from './alerta-temprana/alerta-temprana.module';
 
 
 @Module({
@@ -35,6 +36,7 @@ import { RiesgoMediaticoModule } from './riesgo-mediatico/riesgo-mediatico.modul
 		GroupsModule,
 		DashboardUserModule,
 		RiesgoMediaticoModule,
+		AlertaTempranaModule,
 	],
 	controllers: [],
 	providers: [

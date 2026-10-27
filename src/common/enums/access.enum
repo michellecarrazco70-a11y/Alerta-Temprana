@@ -1,0 +1,15 @@
+export enum TypePermissions {
+   USERS_MODULE = 1,
+   ROLES_MODULE = 2,
+
+   PERMISSIONS_MODULE = 3,
+   PERMISSONS_MODULE = 3,
+
+   GROUPS_MODULE = 4,
+   GRUPS_MODULE = 4,
+
+   DASHBOARD_MANAGER_MODULE = 5,
+   PROYECTOS = 6,
+   MAPA_RED_TRONCAL = 7
+
+}
