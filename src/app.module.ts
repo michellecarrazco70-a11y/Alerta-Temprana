@@ -16,6 +16,8 @@ import { SystemLogsModule } from './system-logs/system-logs.module';
 import { DashboardUserModule } from './dashboard-user/dashboard-user.module';
 import { RiesgoMediaticoModule } from './riesgo-mediatico/riesgo-mediatico.module';
 import { AlertaTempranaModule } from './alerta-temprana/alerta-temprana.module';
+import { EntrevistasModule } from './entrevistas/entrevistas.module';
+
 
 
 @Module({
@@ -36,7 +38,10 @@ import { AlertaTempranaModule } from './alerta-temprana/alerta-temprana.module';
 		GroupsModule,
 		DashboardUserModule,
 		RiesgoMediaticoModule,
+
 		AlertaTempranaModule,
+
+		EntrevistasModule,
 	],
 	controllers: [],
 	providers: [
