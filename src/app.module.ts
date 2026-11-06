@@ -18,6 +18,8 @@ import { RiesgoMediaticoModule } from './riesgo-mediatico/riesgo-mediatico.modul
 import { BibliotecaEpidemiologicaModule } from './biblioteca-epidemiologica/biblioteca-epidemiologica.module';
 import { SemanaEpidemiologica } from './entities/usr/adr-semana-epidemiologica.entity';
 import { InformeEpidemiologico } from './entities/usr/adr-informe-epidemiologico.entity';
+import { EntrevistasModule } from './entrevistas/entrevistas.module';
+
 
 
 @Module({
@@ -40,8 +42,8 @@ import { InformeEpidemiologico } from './entities/usr/adr-informe-epidemiologico
 		RiesgoMediaticoModule,
 		BibliotecaEpidemiologicaModule,
 		SemanaEpidemiologica,
-		InformeEpidemiologico
-
+		InformeEpidemiologico,
+		EntrevistasModule,
 	],
 	controllers: [],
 	providers: [
