@@ -18,6 +18,7 @@ import { AlertaTempranaService } from './alerta-temprana.service';
 import { CreateAlertaTempranaDto } from './dtos/create-alerta-temprana.dto';
 import { UpdateAlertaTempranaDto } from './dtos/update-alerta-temprana.dto';
 import { FindAlertasTempranasDto } from './dtos/find-alerta-temprana.dto';
+
 @Controller('alertas-tempranas')
 export class AlertaTempranaController {
 
@@ -39,23 +40,23 @@ export class AlertaTempranaController {
 	}
 
 	@Get(':uuid')
-	findOne(@Param('uuid', ParseUUIDPipe) uuid: string) {
+	findOne(@Param('uuid', new ParseUUIDPipe()) uuid: string) {
 		return this.alertasService.findOne(uuid);
 	}
 
-	@Patch(':uuid/editar')
+	@Patch(':uuid')
 	update(
-		@Param('uuid', ParseUUIDPipe) uuid: string,
+		@Param('uuid', new ParseUUIDPipe()) uuid: string,
 		@Body() dto: UpdateAlertaTempranaDto,
 		@GetCurrentUserId() userId: number
 	) {
 		return this.alertasService.update(uuid, dto, userId);
 	}
 
-	@Delete(':uuid/eliminar')
+	@Delete(':uuid')
 	@HttpCode(HttpStatus.NO_CONTENT)
 	remove(
-		@Param('uuid', ParseUUIDPipe) uuid: string,
+		@Param('uuid', new ParseUUIDPipe()) uuid: string,
 		@GetCurrentUserId() userId: number
 	): Promise<void> {
 		return this.alertasService.remove(uuid, userId);

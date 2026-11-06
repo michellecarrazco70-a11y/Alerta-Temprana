@@ -1,15 +1,18 @@
+import { IsOptional, IsString, IsInt, Min } from 'class-validator';
 import { Type } from 'class-transformer';
-import {
-	IsDateString,
-	IsInt,
-	IsOptional,
-	IsString,
-	Matches,
-	Max,
-	Min
-} from 'class-validator';
 
 export class FindAlertasTempranasDto {
+	@IsOptional()
+	@Type(() => Number)
+	@IsInt()
+	@Min(0)
+	skip?: number;
+
+	@IsOptional()
+	@Type(() => Number)
+	@IsInt()
+	@Min(1)
+	take?: number;
 
 	@IsOptional()
 	@IsString()
@@ -20,8 +23,7 @@ export class FindAlertasTempranasDto {
 	patologia?: string;
 
 	@IsOptional()
-	@IsDateString()
-	@Matches(/^\d{4}-\d{2}-\d{2}$/)
+	@IsString()
 	fecha?: string;
 
 	@IsOptional()
@@ -31,17 +33,4 @@ export class FindAlertasTempranasDto {
 	@IsOptional()
 	@IsString()
 	localidad?: string;
-
-	@Type(() => Number)
-	@IsOptional()
-	@IsInt()
-	@Min(0)
-	skip: number = 0;
-
-	@Type(() => Number)
-	@IsOptional()
-	@IsInt()
-	@Min(1)
-	@Max(100)
-	take: number = 10;
 }
