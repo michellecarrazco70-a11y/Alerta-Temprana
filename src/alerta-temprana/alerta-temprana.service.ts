@@ -12,6 +12,7 @@ import { AlertaTemprana } from "../entities/usr/alerta-temprana.entity";
 import { CreateAlertaTempranaDto } from "./dtos/create-alerta-temprana.dto";
 import { UpdateAlertaTempranaDto } from "./dtos/update-alerta-temprana.dto";
 import { FindAlertasTempranasDto } from "./dtos/find-alerta-temprana.dto";
+import { AlertaTempranaEliminada } from "../entities/usr/alerta-temprana-eliminada.entity";
 
 @Injectable()
 export class AlertaTempranaService {
@@ -168,6 +169,22 @@ export class AlertaTempranaService {
 				throw new NotFoundException("Alerta temprana no encontrada.");
 			}
 
+			// Guarda los datos en la bitácora de respaldo
+			const copiaEliminada = manager.create(AlertaTempranaEliminada, {
+				uuidOriginal: alerta.uuid,
+				patologia: alerta.patologia,
+				fecha: alerta.fecha,
+				municipio: alerta.municipio,
+				localidad: alerta.localidad,
+				numeroCasos: alerta.numeroCasos,
+				createdByOriginal: alerta.createdBy,
+				createdAt: alerta.createdAt ?? new Date(),
+				deletedBy: userId,
+			});
+			await manager.save(AlertaTempranaEliminada, copiaEliminada);
+		
+
+			// Actualiza deletedBy y realiza softDelete en la tabla principal
 			await manager.update(
 				AlertaTemprana,
 				{ id: alerta.id },

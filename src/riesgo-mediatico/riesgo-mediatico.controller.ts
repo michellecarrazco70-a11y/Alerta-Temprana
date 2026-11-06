@@ -27,9 +27,7 @@ import { CreateRiesgoMediaticoDto } from './dtos/create-riesgo-mediatico.dto';
 import { UpdateRiesgoMediaticoDto } from './dtos/update-riesgo-mediatico.dto';
 import { FindRiesgosDto } from './dtos/find-riesgos.dto';
 
-// Registrar el permiso del módulo en access.enum y aplicar
-// aquí el decorador @Permissions(...) correspondiente.
-// Las rutas deben estar protegidas por la autenticación existente.
+
 
 @Controller('riesgos-mediaticos')
 export class RiesgoMediaticoController {
