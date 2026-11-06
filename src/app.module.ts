@@ -15,6 +15,9 @@ import { PermissionsGuard } from './common/guards/permissions.guard';
 import { SystemLogsModule } from './system-logs/system-logs.module';
 import { DashboardUserModule } from './dashboard-user/dashboard-user.module';
 import { RiesgoMediaticoModule } from './riesgo-mediatico/riesgo-mediatico.module';
+import { BibliotecaEpidemiologicaModule } from './biblioteca-epidemiologica/biblioteca-epidemiologica.module';
+import { SemanaEpidemiologica } from './entities/usr/adr-semana-epidemiologica.entity';
+import { InformeEpidemiologico } from './entities/usr/adr-informe-epidemiologico.entity';
 
 
 @Module({
@@ -35,6 +38,10 @@ import { RiesgoMediaticoModule } from './riesgo-mediatico/riesgo-mediatico.modul
 		GroupsModule,
 		DashboardUserModule,
 		RiesgoMediaticoModule,
+		BibliotecaEpidemiologicaModule,
+		SemanaEpidemiologica,
+		InformeEpidemiologico
+
 	],
 	controllers: [],
 	providers: [
